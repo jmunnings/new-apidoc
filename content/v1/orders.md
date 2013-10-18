@@ -8,7 +8,8 @@ title: Orders | OANDA API
 {:toc}
 
 
-## GET /v1/accounts/:account_id/orders
+## Get orders for an account
+GET /v1/accounts/:account_id/orders
 
 #### Request
     curl -X GET "http://api-sandbox.oanda.com/v1/accounts/12345/orders?instrument=EUR_USD&count=4"
@@ -38,7 +39,9 @@ Orders can be paginated with the count and maxId parameters.
 At most, a maximum of 50 orders can be returned in one query. 
 If more orders exist than specified by the given or default count, a url with maxId set to the next unreturned order will be constructed.
 
-## POST /v1/accounts/:account_id/orders
+## Create a new order
+POST /v1/accounts/:account_id/orders
+
 #### Request
     curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "instrument=EUR_USD&units=2&side=sell&type=marketIfTouched&price=1.2&expiry=2013-04-01T00%3A00%3A00Z" "http://api-sandbox.oanda.com/v1/accounts/12345/orders"
 
@@ -77,7 +80,8 @@ If more orders exist than specified by the given or default count, a url with ma
 * **takeProfit**: Take Profit value
 * **trailingStop**: Trailing Stop distance in pips, up to one decimal place
 
-## GET /v1/accounts/:account_id/order/:order_id
+## Get information for an order
+GET /v1/accounts/:account_id/orders/:order_id
 
 #### Request
     curl -X GET "http://api-sandbox.oanda.com/v1/accounts/1234/orders/43211"
@@ -101,7 +105,8 @@ If more orders exist than specified by the given or default count, a url with ma
     }
 
 
-## PUT /v1/accounts/:account_id/orders/:order_id
+## Modify an existing order
+PUT /v1/accounts/:account_id/orders/:order_id
 
 #### Request
     curl -X PUT -H "Content-Type: application/x-www-form-urlencoded" -d "stopLoss=1.3" "http://api-sandbox.oanda.com/v1/accounts/12345/orders/43211"
@@ -138,7 +143,8 @@ If more orders exist than specified by the given or default count, a url with ma
 
 
 
-## DELETE /v1/accounts/:account_id/orders/:order_id
+## Close an order
+DELETE /v1/accounts/:account_id/orders/:order_id
 
 #### Request
     curl -X DELETE "http://api-sandbox.oanda.com/v1/accounts/12345/orders/43211"

@@ -7,7 +7,8 @@ title: Trades | OANDA API
 * TOC
 {:toc}
 
-## GET /v1/accounts/:account_id/trades
+## Get a list of open trades
+GET /v1/accounts/:account_id/trades
 
 #### Request
     curl -X GET "http://api-sandbox.oanda.com/v1/accounts/12345/trades?instrument=EUR_USD&count=4"
@@ -38,7 +39,9 @@ Trades can be paginated with the count and maxId parameters.
 At most, a maximum of 50 trades can be returned in one query. 
 If more trades exist than specified by the given or default count, a url with maxId set to the next unreturned trade will be constructed.
 
-## POST /v1/accounts/:account_id/trades
+## Create a new trade
+POST /v1/accounts/:account_id/trades
+
 #### Request
     curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "instrument=EUR_USD&units=2&side=sell" "http://api-sandbox.oanda.com/v1/accounts/12345/trades"
 
@@ -77,7 +80,8 @@ If more trades exist than specified by the given or default count, a url with ma
 [Learn more about order types, stop loss, take profit, and trailing stop](http://fxtrade.oanda.com/learn/intro-to-currency-trading/first-trade/orders)
 
 
-## GET /v1/accounts/:account_id/trades/:trade_id
+## Get information on a specific trade
+GET /v1/accounts/:account_id/trades/:trade_id
 
 #### Request
     curl -X GET "http://api-sandbox.oanda.com/v1/accounts/1234/trades/43211"
@@ -97,7 +101,8 @@ If more trades exist than specified by the given or default count, a url with ma
 
 
 
-## PUT /v1/accounts/:account_id/trades/:trade_id
+## Modify an existing trade
+PUT /v1/accounts/:account_id/trades/:trade_id
 
 #### Request
     curl -X PUT -H "Content-Type: application/x-www-form-urlencoded" -d "stopLoss=1.6" "http://api-sandbox.oanda.com/v1/accounts/1234/trades/43211"
@@ -124,7 +129,8 @@ If more trades exist than specified by the given or default count, a url with ma
 
 
 
-## DELETE /v1/accounts/:account_id/trades/:trade_id
+## Close an open trade
+DELETE /v1/accounts/:account_id/trades/:trade_id
 
 #### Request
     curl -X DELETE "http://api-sandbox.oanda.com/v1/accounts/1234/trades/43211"

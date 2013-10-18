@@ -8,8 +8,8 @@ title: Positions | OANDA API
 {:toc}
 
 
-## GET /v1/accounts/:account_id/positions
-Get a list of all open positions for :account_id. 
+## Get a list of all open positions
+GET /v1/accounts/:account_id/positions 
 
 #### Request
     curl -X GET "http://api-sandbox.oanda.com/v1/accounts/12345/positions"
@@ -24,8 +24,9 @@ Get a list of all open positions for :account_id.
 
 
 
-## GET /v1/accounts/:account_id/positions/:instrument
-Get an open position for :instrument in :account_id if it exists.
+## Get the position for an instrument
+GET /v1/accounts/:account_id/positions/:instrument
+
 #### Request
     curl -X GET "http://api-sandbox.oanda.com/v1/accounts/12345/positions/EUR_USD"
 
@@ -38,8 +39,8 @@ Get an open position for :instrument in :account_id if it exists.
     }
 
 
-## DELETE /v1/accounts/:account_id/positions/:instrument
-Close out an existing position for :instrument.  
+## Close an existing position 
+DELETE /v1/accounts/:account_id/positions/:instrument
 
 #### Request
     curl -X DELETE "http://api-sandbox.oanda.com/v1/accounts/1234/positions/EUR_USD"

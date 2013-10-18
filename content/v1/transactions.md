@@ -7,7 +7,8 @@ title: Transactions | OANDA API
 * TOC
 {:toc}
 
-## GET /v1/accounts/:account_id/transactions
+## Get transaction history
+GET /v1/accounts/:account_id/transactions
 
 #### Request
     curl -X GET "http://api-sandbox.oanda.com/v1/accounts/12345/transactions?instrument=EUR_USD&count=1"
@@ -55,7 +56,8 @@ Transactions can be paginated with the count and maxId parameters.
 At most, a maximum of 50 transactions can be returned in one query. 
 If more transactions exist than specified by the given or default count, a url with maxId set to the next unreturned transaction will be constructed.
 
-## GET /v1/accounts/:account_id/transactions/:transaction_id
+## Get information for a transaction
+GET /v1/accounts/:account_id/transactions/:transaction_id
 
 #### Request
     curl -X GET "http://api-sandbox.oanda.com/v1/accounts/12345/transactions/1170980"

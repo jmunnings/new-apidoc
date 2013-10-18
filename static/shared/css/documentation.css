@@ -80,13 +80,16 @@ h2 {
   font-size: 16px;
   color: #333;
   margin: 2em auto 1em;
+  padding-top: 48px;
+  margin-top: -48px;
 }
 
   body.api .content h2 {
+    padding-top: 54px;
+    margin-top: -48px;
     background: transparent url(../images/crud-sprite.png) left 2px no-repeat;
     padding-left: 22px;
     margin-bottom: 0.5em;
-    margin-top: 1em;
   }
 
   body.api .change h2.title {
@@ -117,7 +120,6 @@ h6 {
 }
 
 a {
-  color: #4183C4;
   text-decoration: none;
 }
 
@@ -163,7 +165,7 @@ a img {
 /*------------------------------------------------------------------------------
      Header Styles
 ------------------------------------------------------------------------------*/
-
+/*
 #header-wrapper {
   margin-bottom: 0;
   clear: both;
@@ -221,6 +223,7 @@ a img {
   outline: none;
   text-decoration: none;
 }
+*/
 
 /*------------------------------------------------------------------------------
      Sidebar

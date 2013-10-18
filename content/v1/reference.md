@@ -11,15 +11,25 @@ Streaming API Overview
 
 Price API Overview
 ---
+
+|errorCode|HTTP Status Code|HTTP Status Message|message|Detailed description|
+|---|---|---|---|---|
+|1|400|Bad Request|Invalid or malformed argument: [arg]|The argument specified is not properly formatted or is an unaccepted value|
+
+<!--
 | Resource | URI | Methods | Description |
-| -------- | -------- | ------- | ----------- |
+| -------- | -------- | ------ | ---------- |
 | [instruments][rates] | /v1/instruments | GET | Retrieve a list of available currency pairs. |
 | [quote][rates] | /v1/quote | GET | Retrieve live prices for specified instrument(s). |
 | [history][rates] | /v1/history | GET | Retrieve historical rates for the instrument pair. |
+-->
+
+
 
 Trading API Overview
 ---
 
+<!--
 | Resource | URI | Methods | Description |
 | -------- | -------- | ------- | ----------- |
 | [account][accounts]| /v1/accounts/:account_id  | [GET](https://github.com/oanda/apidocs/blob/master/sections/accounts.md#get-v1accountsaccount_id)    | Contains account information for a specific account. |
@@ -31,7 +41,7 @@ Trading API Overview
 | [position collection][positions] | /v1/accounts/:account_id/positions | [GET](https://github.com/oanda/apidocs/blob/master/sections/positions.md#get-v1accountsaccount_idpositions), [DELETE](https://github.com/oanda/apidocs/blob/master/sections/positions.md#delete-v1accountsaccount_idpositionsinstrument) | Contains a list of positions for a specific account. Use GET to retrieve. DELETE to delete existing position. |
 | [transaction][transactions] | /v1/accounts/:account_id/transactions/:trans_id | [GET](https://github.com/oanda/apidocs/blob/master/sections/transactions.md#get-v1accountsaccount_idtransactionstrans_id) | Contains info of a specific transaction. |
 | [transaction collection][transactions] | /v1/accounts/:account_id/transactions | [GET](https://github.com/oanda/apidocs/blob/master/sections/transactions.md#get-v1accountsaccount_idtransactions) | Contains info of a list transactions. |
-
+-->
 
 <!--
 | [price alert][alerts] | /accounts/:account_id/alerts/:alert_id | GET, DELETE | Contains info of a specific transaction. |
@@ -64,32 +74,31 @@ Handling Errors
 
 When an error occurs, the applicable HTTP response code is returned as well as an error message in the body in the following format:
 
-```shell
-HTTP/1.1 400 Bad Request
 
-{
-    "code" : [OANDA error code, may or may not be the same as the HTTP status code],
-    "message"   : [a description of the error which occurred, intended for developers],
-    "moreInfo"  : [(OPTIONAL) a link to a web page describing the error and possible causes and solutions]
-}
-```
+	HTTP/1.1 400 Bad Request
+	{
+	    "code" : [OANDA error code, may or may not be the same as the HTTP status code],
+	    "message"   : [a description of the error which occurred, intended for developers],
+	    "moreInfo"  : [(OPTIONAL) a link to a web page describing the error and possible causes and solutions]
+	}
 
-[More on error codes](https://github.com/oanda/apidocs/blob/master/sections/return_values.md#errors)
 
+[More on error codes](/v1/troubleshooting)
 
 
 
-[accounts]: https://github.com/oanda/apidocs/blob/master/sections/accounts.md
-[trades]: https://github.com/oanda/apidocs/blob/master/sections/trades.md
-[orders]: https://github.com/oanda/apidocs/blob/master/sections/orders.md
-[positions]: https://github.com/oanda/apidocs/blob/master/sections/positions.md
-[transactions]: https://github.com/oanda/apidocs/blob/master/sections/transactions.md
-[alerts]: https://github.com/oanda/apidocs/blob/master/sections/alerts.md
-[news]: https://github.com/oanda/apidocs/blob/master/sections/news.md
-[rates]: https://github.com/oanda/apidocs/blob/master/sections/rates.md
-[notifications]: https://github.com/oanda/apidocs/blob/master/sections/notifications.md
-[quick_start]: https://github.com/oanda/apidocs/blob/master/sections/getting_started.md
-[examples]: https://github.com/oanda/apidocs/blob/master/sections/getting_started.md#examples
+
+[accounts]: /v1/accounts
+[trades]: /v1/trades.md
+[orders]: /v1/orders.md
+[positions]: /v1/positions.md
+[transactions]: /v1/transactions.md
+[alerts]: /v1/alerts.md
+[news]: /v1/news.md
+[rates]: /v1/rates.md
+[notifications]: /v1/notifications.md
+[quick_start]: /v1/getting_started.md
+[examples]: /v1/getting_started.md#examples
 
 
 ##Rate Limiting

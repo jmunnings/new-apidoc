@@ -7,7 +7,9 @@ title: Accounts | OANDA API
 * TOC
 {:toc}
 
-## GET /v1/accounts
+## Get accounts for a user
+
+GET /v1/accounts?username=:username
 
 #### Request
     curl -X GET "http://api-sandbox.oanda.com/v1/accounts?username=fxtrader"
@@ -19,7 +21,9 @@ title: Accounts | OANDA API
        23633
     ]
 
-## POST /v1/accounts
+## Create a test account
+
+POST /v1/accounts
 
 #### Request
     curl -X POST -H "Content-Type: application/x-www-form-urlencoded" "http://api-sandbox.oanda.com/v1/accounts"
@@ -36,7 +40,8 @@ title: Accounts | OANDA API
 
 * **currency**: Home currency of the newly created account
 
-## GET /v1/accounts/:account_id
+## Get account information
+GET /v1/accounts/:account_id
 
 #### Request
     curl -X GET "http://api-sandbox.oanda.com/v1/accounts/8954947"

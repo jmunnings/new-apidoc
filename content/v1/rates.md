@@ -7,7 +7,8 @@ title: Rates | OANDA API
 * TOC
 {:toc}
 
-## GET /v1/instruments
+## Get an instrument list
+GET /v1/instruments
 
 Return a list of instruments (currency pairs, CFDs, and commodities) that are available on the OANDA platform.
 
@@ -58,7 +59,8 @@ Return a list of instruments (currency pairs, CFDs, and commodities) that are av
  
 If the __fields__ parameter was not specified in the request, the default instrument fields returned are __instrument__, __displayName__, __pip__, __maxTradeUnits__.
 
-## GET /v1/quote
+## Get current prices
+GET /v1/quote
 
 Fetch live prices for specified instruments that are available on the OANDA platform.
 
@@ -97,7 +99,10 @@ Fetch live prices for specified instruments that are available on the OANDA plat
 * __instruments__:  A (URL encoded) comma separated list of instruments to fetch prices for.  Values should be one of the available instrument from the /v1/instruments response.
 
 
-## GET /v1/history
+## Retrieve instrument history
+GET /v1/history
+
+Get historical information about an instrument
 
 #### Request
     curl -X GET "http://api-sandbox.oanda.com/v1/history?instrument=EUR_USD&count=2&candleFormat=midpoint"
@@ -195,9 +200,9 @@ If __includeFirst__ is not specified, the default setting is "true".
 <sup>2</sup> If neither __start__ nor __end__ time are specified by the requester, __end__ will default to the current time and __count__ candles will be returned.<br>
 
 
-## Candlestick Representation
+## About Candlestick Representation
 
-* __midpoint__ midpoint-based candlesticks with tick volume
+__midpoint__ midpoint-based candlesticks with tick volume
 
     {
         "time":<TS>,
@@ -209,7 +214,7 @@ If __includeFirst__ is not specified, the default setting is "true".
         "complete":<DB>
     }
 
-* __bidask__ - BID/ASK-based candlesticks with tick volume
+__bidask__ - BID/ASK-based candlesticks with tick volume
 
     {
         "time":<TS>,

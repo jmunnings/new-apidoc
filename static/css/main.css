@@ -1,0 +1,200 @@
+/* larger than desktop */
+
+@media (min-width:980px) {
+    body {
+	    padding-top: 70px;
+    }
+    
+    .btn.oanda-sign-in {
+        float: right;
+        margin-top: 6px;
+    }
+
+    .oanda-main-block {
+        margin-top: 75px;
+        font-size: 16px;
+    }
+
+    .oanda-api-box {
+        left: 50px;
+        width: 414px;
+    }
+    
+    .oanda-right-div {   
+        margin: 15px;
+    }
+}
+
+/* smaller than desktop */
+
+@media (max-width: 979px) {
+    
+    .btn.oanda-sign-in {
+        float: none;        
+        margin: 0px 0px 10px 14px;
+    }
+    
+    .oanda-main-block {
+        margin-top: 25px;
+    }
+    
+    .oanda-api-box {
+        left: 88px;
+        width: 266px;
+    }
+    
+    .oanda-nav {
+        margin-bottom: 0px;
+    }    
+}
+
+/* larger than portrait or landscape phone */
+@media (min-width: 768px) {
+    .show-grid {
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+}
+
+/* smaller than portrait tablet or landscape phone */
+
+@media (max-width: 767px) {
+    .show-grid {
+        margin: 0px;
+    }
+    
+    .oanda-second-block, .oanda-third-block {
+        margin-bottom: 10px;
+    }
+    
+    .oanda-right-div {   
+        margin: 0px;
+    }
+}
+
+.oanda-container {
+	max-width: 960px;
+	margin: auto;
+}
+
+/* general buttons */
+
+.btn.oanda-btn {
+	border: none;
+    padding: 4px 14px;
+	line-height: 28px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.btn > a {
+    color: #EEEEEE;
+    text-decoration: none;
+}
+
+/* navbar elements */
+
+input.oanda-nav-search[type=text] {
+    margin-right: 10px;
+	background-color: #368D30;
+	border: 1px solid #256A20;
+	border-radius: 3px;
+	box-shadow: inset 1px 1px 2px 0px #2C7C26;
+	-moz-box-shadow: inset 1px 1px 2px 0px #2C7C26;
+	-webkit-box-shadow: inset 1px 1px 2px 0px #2C7C26;
+}
+
+.navbar .oanda-nav > li > a, .navbar .oanda-brand {
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.btn.oanda-sign-in {
+    background-image: none !important;
+    background-color: #236B1D;
+}
+
+/* body elements */
+
+.oanda-main-block {
+    font-weight: lighter;
+    position: relative;
+}
+
+.oanda-second-block {
+    padding: 5px 25px 15px;
+    background-color: #EBEFF5;
+    border-radius: 3px;
+    height:auto !important;
+    height:350px; 
+}
+
+.oanda-second-block > p {
+    width: 90%;
+}
+
+.oanda-third-block {
+    padding: 5px 10px 15px;    
+    border: 1px solid #DADAE4;
+    border-radius: 10px;
+    background-color: #EBEFF5;
+}
+
+.oanda-third-block > p {
+    font-size: 15px;
+}
+
+
+.oanda-right-div {
+    text-align: right;
+}
+
+.oanda-right-div > a {
+    margin-right: 15px;
+}
+
+/* footer elements */
+
+.footer-links {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 12px;
+}
+.row-extra {
+    display: none;
+}
+
+/* misc, including images */
+
+.oanda-search-icon {
+    position: relative;
+    margin-left: -32px;
+    top: 1px;
+}
+
+ul.inline>li.oanda-divider-vertical {
+    padding-right: 10px;
+    border-right: 1px solid #979899;
+}
+
+.oanda-api-box {
+    margin-top: -55px;
+    margin-right:12px;
+    top: 55px;
+    position: relative;
+}
+.oanda-icon {
+    height:53px;
+    width:45px;
+    margin-right:12px;
+
+}
+.btn-contact-us {
+    color: #2f8228;
+    text-decoration: none;
+    background:none;
+    border:none;
+    margin-bottom: 4px;  
+}
+.contact-info {
+    display: none;
+    margin-bottom: 4px;
+}
