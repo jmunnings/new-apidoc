@@ -1,0 +1,11 @@
+$(document).ready(function(){
+    $(".btn-contact-us").click(function(){
+    $(".contact-info").show("slow");
+    $(".btn-contact-us").hide("slow");
+  });
+});
+$(document).ready(function(){
+  $('.icon-search').on('click',function(){
+        document.forms["navbar-search"].submit();
+  });
+});

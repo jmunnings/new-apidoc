@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="apidocs">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Language" content="en-us" />
@@ -9,37 +9,53 @@
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/960.css" rel="stylesheet" type="text/css" />
   <link href="/css/uv_active4d.css" rel="stylesheet" type="text/css" />
-  <link href="/shared/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
-  <link href="/shared/css/pygments.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="/shared/css/pygments.css" media="screen" rel="stylesheet" type="text/css" />
+
+  <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/> 
+  <link href="/shared/css/documentation.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css" rel="stylesheet" type="text/css" />
+
   <script src="/shared/js/jquery.js" type="text/javascript"></script>
+  <script src="/bootstrap/js/bootstrap.js" type="text/javascript"></script>
   <script src="/shared/js/documentation.js" type="text/javascript"></script>
+
 </head>
-<body class="api">
-    <div id="header-wrapper">
-      <div id="header">
-        <div>
-          <a class="logo" href="/"><img src="/images/oanda_header.png" alt="GitHub:Developer" /></a>
-          <ul class="nav">
-            <li><a href="/v1/">Overview</a></li>
-            <li><a href="/v1/reference">Reference Documentation</a></li>
-            <li><a href="/v1/code-samples">Sample Code</a></li>
-            <li><a href="https://apigee.com/oandapoc/embed/console/oanda">API Console</a></li>
-            </a></li>
-          </ul>
+<body class="api" ng-controller="Ctrl">
+    <div class="navbar navbar-fixed-top oanda-nav">
+                <div class="navbar-inner">
+                        <div class="oanda-container container-fluid">
+                            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                        
+                                <a class="brand oanda-brand" href="/">OANDA Developers</a>
+                                <div class="nav-collapse collapse">
+                                    <form class="navbar-search pull-left" action="https://github.com/oanda/apidocs/search" id='navbar-search' method="get">
+                                            <input type="text" name="q" class="search-query oanda-nav-search"><span class="oanda-search-icon"><i class="icon-search icon-white"></i></span>
+                                    </form>
+                                    <ul class="nav oanda-nav">
+                                            <li><a href="/v1/getting-started/"><strong>Getting Started</strong></a></li>
+                                            <li><a href="https://apigee.com/oandapoc/embed/console/oanda"><strong>API Console</strong></a></li>
+                                            <li><a href="/v1/code-samples/"><strong>Sample Code</strong></a></li>
+                                            <li><a href="/v1/"><strong>Documentation</strong></a></li>
+                                    </ul>
+                                </div>
+                        </div>
+                </div>
         </div>
-      </div><!-- #header -->
-    </div><!-- #header-wrapper -->
 
     <div id="wrapper">
       <div class="content">
     <h1 id="position-endpoints">Position Endpoints</h1>
 
 <ul id="markdown-toc">
-<li><a href="#get-v1accountsaccountidpositions">GET /v1/accounts/:account_id/positions</a></li>
-  <li><a href="#get-v1accountsaccountidpositionsinstrument">GET /v1/accounts/:account_id/positions/:instrument</a></li>
-  <li><a href="#delete-v1accountsaccountidpositionsinstrument">DELETE /v1/accounts/:account_id/positions/:instrument</a></li>
-</ul><h2 id="get-v1accountsaccountidpositions">GET /v1/accounts/:account_id/positions</h2>
-<p>Get a list of all open positions for :account_id. </p>
+<li><a href="#get-a-list-of-all-open-positions">Get a list of all open positions</a></li>
+  <li><a href="#get-the-position-for-an-instrument">Get the position for an instrument</a></li>
+  <li><a href="#close-an-existing-position">Close an existing position</a></li>
+</ul><h2 id="get-a-list-of-all-open-positions">Get a list of all open positions</h2>
+<p>GET /v1/accounts/:account_id/positions </p>
 
 <h4 id="request">Request</h4>
 <pre><code>curl -X GET "http://api-sandbox.oanda.com/v1/accounts/12345/positions"
@@ -54,10 +70,12 @@
 }
 </code></pre>
 
-<h2 id="get-v1accountsaccountidpositionsinstrument">GET /v1/accounts/:account_id/positions/:instrument</h2>
-<p>Get an open position for :instrument in :account_id if it exists.
-#### Request
-    curl -X GET “http://api-sandbox.oanda.com/v1/accounts/12345/positions/EUR_USD”</p>
+<h2 id="get-the-position-for-an-instrument">Get the position for an instrument</h2>
+<p>GET /v1/accounts/:account_id/positions/:instrument</p>
+
+<h4 id="request-1">Request</h4>
+<pre><code>curl -X GET "http://api-sandbox.oanda.com/v1/accounts/12345/positions/EUR_USD"
+</code></pre>
 
 <h4 id="response-1">Response</h4>
 <pre><code>{
@@ -68,10 +86,10 @@
 }
 </code></pre>
 
-<h2 id="delete-v1accountsaccountidpositionsinstrument">DELETE /v1/accounts/:account_id/positions/:instrument</h2>
-<p>Close out an existing position for :instrument.  </p>
+<h2 id="close-an-existing-position">Close an existing position</h2>
+<p>DELETE /v1/accounts/:account_id/positions/:instrument</p>
 
-<h4 id="request-1">Request</h4>
+<h4 id="request-2">Request</h4>
 <pre><code>curl -X DELETE "http://api-sandbox.oanda.com/v1/accounts/1234/positions/EUR_USD"
 </code></pre>
 
@@ -93,106 +111,86 @@
           <li class="js-topic">
             <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/v1/">Overview</a></h3>
             <ul class="js-guides">
-              <li><a href="/v1/reference/">Reference</a></li>
-              <li><a href="/v1/auth/">Authentication</a></li>
-              <li><a href="/v1/troubleshooting/">Troubleshooting &amp; Errors</a></li>
+              <li><a name="nav-link" href="/v1/reference/">Reference</a></li>
+              <li><a name="nav-link" href="/v1/auth/">Authentication</a></li>
+              <li><a name="nav-link" href="/v1/troubleshooting/">Troubleshooting &amp; Errors</a></li>
             </ul>
           </li>
           <li class="js-topic">
             <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/v1/getting-started">Getting Started</a></h3>
             <ul class="js-guides">
-              <li><a href="/v1/trading-quick-start/">Quick Trading Guide</a></li>
-              <li><a href="/v1/code-samples/">Code Samples</a></li>
+              <li><a name="nav-link" href="/v1/trading-quick-start/">Quick Trading Guide</a></li>
+              <li><a name="nav-link" href="/v1/code-samples/">Code Samples</a></li>
             </ul>
           </li>
           <li class="js-topic">
-            <h3><a href="/v1/rates/">Rates</a></h3>
+            <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/v1/rates">Rates</a></h3>
+            <ul class="js-guides">
+              <li><a name="nav-link" href="/v1/rates/#get-an-instrument-list">Get an Instrument List</a></li>
+              <li><a name="nav-link" href="/v1/rates/#get-current-prices">Get Current Prices</a></li>
+              <li><a name="nav-link" href="/v1/rates/#retrieve-instrument-history">Retrieve Instrument History</a></li>
+              <li><a name="nav-link" href="/v1/rates/#about-candlestick-representation">About Candlestick Representation</a></li>
+            </ul> 
           </li>
           <li class="js-topic">
-            <h3><a href="/v1/accounts/">Accounts</a></h3>
+            <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/v1/accounts">Accounts</a></h3>
+            <ul class="js-guides">
+              <li><a name="nav-link" href="/v1/accounts/#get-accounts-for-a-user">Get Accounts for a User</a></li>
+              <li><a name="nav-link" href="/v1/accounts/#create-a-test-account">Create a Test Account</a></li>
+              <li><a name="nav-link" href="/v1/accounts/#get-account-information">Get Account Information</a></li>
+            </ul> 
           </li>
           <li class="js-topic">
-            <h3><a href="/v1/trades/">Trades</a></h3>
+            <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/v1/trades">Trades</a></h3>
+            <ul class="js-guides">
+              <li><a name="nav-link" href="/v1/trades/#get-a-list-of-open-trades">Get a List of Open Trades</a></li>
+              <li><a name="nav-link" href="/v1/trades/#create-a-new-trade">Create a New Trade</a></li>
+              <li><a name="nav-link" href="/v1/trades/#get-information-on-a-specific-trade">Get Information on a Specific Trade</a></li>
+              <li><a name="nav-link" href="/v1/trades/#modify-an-existing-trade">Modify an Existing Trade</a></li>
+              <li><a name="nav-link" href="/v1/trades/#close-an-open-trade">Close an Open Trade</a></li>
+            </ul> 
           </li>
           <li class="js-topic">
-            <h3><a href="/v1/orders/">Orders</a></h3>
+            <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/v1/orders">Orders</a></h3>
+            <ul class="js-guides">
+              <li><a name="nav-link" href="/v1/orders/#get-orders-for-an-account">Get Orders for an Account</a></li>
+              <li><a name="nav-link" href="/v1/orders/#create-a-new-order">Create a New Order</a></li>
+              <li><a name="nav-link" href="/v1/orders/#get-information-for-an-order">Get Information for an Order</a></li>
+              <li><a name="nav-link" href="/v1/orders/#modify-an-existing-order">Modify an Existing Order</a></li>
+              <li><a name="nav-link" href="/v1/orders/#close-an-order">Close an Order</a></li>
+            </ul> 
           </li>
           <li class="js-topic">
-            <h3><a href="/v1/positions/">Positions</a></h3>
+            <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/v1/positions">Positions</a></h3>
+            <ul class="js-guides">
+              <li><a name="nav-link" href="/v1/positions/#get-a-list-of-all-open-positions">Get a List of All Open Positions</a></li>
+              <li><a name="nav-link" href="/v1/positions/#get-the-position-for-an-instrument">Get the Position for an Instrument</a></li>
+              <li><a name="nav-link" href="/v1/positions/#close-an-existing-position">Close an Existing Position</a></li>
+            </ul> 
           </li>
           <li class="js-topic">
-            <h3><a href="/v1/transactions/">Transaction History</a></h3>
+            <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/v1/transactions">Transaction History</a></h3>
+            <ul class="js-guides">
+              <li><a name="nav-link" href="/v1/transactions/#get-transaction-history">Get Transaction History</a></li>
+              <li><a name="nav-link" href="/v1/transactions/#get-information-for-a-transaction">Get Information for a Transaction</a></li>
+            </ul> 
           </li>
         </ul>
       </div> <!-- /sidebar-module -->
-      <div class="sidebar-module">
-        <p>This website is a <a href="https://github.com/github/developer.github.com" target="_blank">public GitHub repository</a>. Please help us by forking the project and adding to it.</p>
-      </div>
     </div><!-- /sidebar-shell -->
 
     </div><!-- #wrapper -->
 
-    <div id="footer" >
-      <div class="upper_footer">
-        <div class="footer_inner clearfix">
+    <footer>
+      <div class="footer-links">
+                <ul class="inline">
+                    <li>Copyright OANDA 2013.</li> 
+                    <li><button class="btn-contact-us">Contact us</button></li>
+                    <li><div class="contact-info">api@oanda.com</div></li>
+                </ul>
+            </div>
 
-        <ul class="footer_nav">
-          <h4>GitHub</h4>
-          <li><a href="https://github.com/about">About</a></li>
-          <li><a href="https://github.com/blog">Blog</a></li>
-          <li><a href="https://github.com/features">Features</a></li>
-          <li><a href="https://github.com/contact">Contact &amp; Support</a></li>
-          <li><a href="https://github.com/training">Training</a></li>
-          <li><a href="http://status.github.com/">Site Status</a></li>
-        </ul>
-
-        <ul class="footer_nav">
-          <h4>Tools</h4>
-          <li><a href="http://mac.github.com/">GitHub for Mac</a></li>
-          <li><a href="http://mobile.github.com/">Issues for iPhone</a></li>
-          <li><a href="https://gist.github.com">Gist: Code Snippets</a></li>
-          <li><a href="http://enterprise.github.com/">GitHub Enterprise</a></li>
-          <li><a href="http://jobs.github.com/">Job Board</a></li>
-        </ul>
-
-        <ul class="footer_nav">
-          <h4>Extras</h4>
-          <li><a href="http://shop.github.com/">GitHub Shop</a></li>
-          <li><a href="http://octodex.github.com/">The Octodex</a></li>
-        </ul>
-
-        <ul class="footer_nav">
-          <h4>Documentation</h4>
-          <li><a href="http://help.github.com/">GitHub Help</a></li>
-          <li><a href="http://developer.github.com/">Developer API</a></li>
-          <li><a href="http://github.github.com/github-flavored-markdown/">GitHub Flavored Markdown</a></li>
-          <li><a href="http://pages.github.com/">GitHub Pages</a></li>
-        </ul>
-
-        </div><!-- /.site -->
-      </div><!-- /.upper_footer -->
-
-      <div class="lower_footer">
-        <ul class="footer-cell">
-          <li><a href="http://help.github.com/terms-of-service/">Terms of Service</a></li>
-          <li><a href="http://help.github.com/privacy-policy/">Privacy</a></li>
-          <li><a href="http://help.github.com/security/">Security</a></li>
-        </ul>
-
-        <span class="footer-cell">
-          <a href="https://github.com" class="mega-icon mega-icon-invertocat"></a>
-        </span>
-
-        <span class="footer-cell">
-          Design &copy; <span class="js-year">2013</span> GitHub, Inc. All rights reserved.
-          <p>
-            Except where otherwise noted, content on this site is licensed under a
-            <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons CC-BY license</a>.
-          </p>
-        </span>
-      </div>
-
-    </div><!-- /#footer -->
+    </footer><!-- /#footer -->
     <script type="text/javascript">
       var _gauges = _gauges || [];
       (function() {
